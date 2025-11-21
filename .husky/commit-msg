@@ -1,0 +1,3 @@
+echo 'Please be patient, this may take a while'
+
+npx --no-install commitlint --edit $1
