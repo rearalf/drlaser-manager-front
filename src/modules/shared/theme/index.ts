@@ -5,7 +5,6 @@ const themeLight = createTheme({
   cssVariables: true,
 
   // 1. PALETA DE COLORES ADAPTADA
-  // Mapeamos los colores de la paleta de la clínica dental a las categorías de MUI
   palette: {
     // PRIMARY: Color principal de la clínica (#EDAF8A)
     primary: {
@@ -50,12 +49,12 @@ const themeLight = createTheme({
     },
     // Añadimos colores neutros y de superficie para referenciarlos fácilmente
     background: {
-      default: "var(--color-white)",
-      paper: "var(--color-white)",
+      default: "#ffffff",
+      paper: "#ffffff",
     },
     text: {
-      primary: "var(--color-text-dark)",
-      secondary: "var(--color-text-light)",
+      primary: "#333333",
+      secondary: "#777777",
     },
   },
 
