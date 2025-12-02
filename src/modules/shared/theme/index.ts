@@ -47,18 +47,15 @@ const themeLight = createTheme({
       dark: "#429C35",
       contrastText: "#FFFFFF",
     },
-    // Añadimos colores neutros y de superficie para referenciarlos fácilmente
     background: {
       default: "#ffffff",
-      paper: "#ffffff",
+      paper: "#f7f7f7",
     },
     text: {
       primary: "#333333",
       secondary: "#777777",
     },
   },
-
-  // 2. ESTILOS DE COMPONENTES ADAPTADOS CON VARIABLES CSS
   components: {
     MuiFormControl: {
       styleOverrides: {

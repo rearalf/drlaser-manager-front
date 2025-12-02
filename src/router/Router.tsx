@@ -7,7 +7,7 @@ import DashboardPage from "@modules/Dashboard";
 import LoginPage from "@modules/auth/Login";
 import NotFoundPage from "@modules/NotFound";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     element: <AuthLayout />,
     children: [

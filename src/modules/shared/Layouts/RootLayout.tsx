@@ -1,7 +1,13 @@
+import Navbar from "@components/Navbar";
 import { Outlet } from "react-router";
 
 function RootLayout() {
-  return <Outlet />;
+  return (
+    <>
+      <Navbar isAuthenticated />
+      <Outlet />
+    </>
+  );
 }
 
 export default RootLayout;
