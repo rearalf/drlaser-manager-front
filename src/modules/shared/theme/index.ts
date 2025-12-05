@@ -210,6 +210,20 @@ const themeLight = createTheme({
         }),
       },
     },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          "&.MuiButton-contained.MuiButton-containedPrimary": {
+            color: theme.palette.secondary[100],
+            background: theme.palette.primary[800],
+          },
+          "&.MuiButton-contained.MuiButton-containedPrimary:hover": {
+            color: theme.palette.secondary[200],
+            opacity: 0.8,
+          },
+        }),
+      },
+    },
   },
 });
 

@@ -1,13 +1,15 @@
+import { Link as RouterLink } from "react-router";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useState } from "react";
 import {
   Box,
+  Link,
   Button,
   Container,
   Typography,
   IconButton,
   InputAdornment,
 } from "@mui/material";
-import { useState } from "react";
-import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import TextFieldComponent from "@components/Inputs/TextFieldComponent";
 
@@ -38,8 +40,8 @@ function LoginPage() {
         }}
       >
         <Box component="form" onSubmit={handleSubmit}>
-          <img src="/dr-laser.png" style={{ marginBottom: "36px" }} />
-          <Typography component="h1" variant="h1" sx={{ mb: 3 }}>
+          <img src="/dr-laser.png" style={{ marginBottom: 28 }} />
+          <Typography component="h1" variant="h1" sx={{ mb: 4 }}>
             Iniciar Sesión
           </Typography>
 
@@ -76,12 +78,18 @@ function LoginPage() {
             }
           />
 
-          <Button
-            fullWidth
-            type="submit"
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
+          <Typography variant="body2" sx={{ mt: 2, textAlign: "right" }}>
+            <Link
+              component={RouterLink}
+              to="/forgot-password"
+              underline="hover"
+              sx={{ cursor: "pointer", fontWeight: 500 }}
+            >
+              ¿Has olvidado tu contraseña?
+            </Link>
+          </Typography>
+
+          <Button fullWidth type="submit" variant="contained" sx={{ mt: 4 }}>
             Entrar
           </Button>
         </Box>
