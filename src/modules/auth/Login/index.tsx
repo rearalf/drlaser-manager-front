@@ -1,7 +1,22 @@
-import { Box, Container, Typography, TextField, Button } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Typography,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
+import { useState } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+
+import TextFieldComponent from "@components/Inputs/TextFieldComponent";
 
 function LoginPage() {
-  const handleSubmit = (event: any) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 
@@ -28,27 +43,37 @@ function LoginPage() {
             Iniciar Sesión
           </Typography>
 
-          <TextField
-            margin="normal"
-            required
-            fullWidth
+          <TextFieldComponent
             id="email"
-            label="Correo Electrónico"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            variant="outlined"
-          />
-          <TextField
-            margin="normal"
+            label="Correo electrónico"
+            type="email"
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             required
             fullWidth
-            name="password"
-            label="Contraseña"
-            type="password"
+            autoComplete="email"
+            placeholder="ejemplo@correo.com"
+            sx={{ marginBottom: "16px" }}
+          />
+
+          <TextFieldComponent
+            fullWidth
             id="password"
-            autoComplete="current-password"
-            variant="outlined"
+            label="Contraseña"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <FiEyeOff /> : <FiEye />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
 
           <Button
