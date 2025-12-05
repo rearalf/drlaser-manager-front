@@ -107,32 +107,32 @@ const themeLight = createTheme({
         h1: ({ theme }) => ({
           fontSize: "2.4rem",
           fontWeight: 800,
-          color: theme.palette.primary["800"],
+          color: theme.palette.primary["700"],
           letterSpacing: "-0.03em",
         }),
         h2: ({ theme }) => ({
           fontSize: "2rem",
           fontWeight: 700,
-          color: theme.palette.primary["700"],
+          color: theme.palette.primary["600"],
         }),
         h3: ({ theme }) => ({
           fontSize: "1.8rem",
           fontWeight: 600,
-          color: theme.palette.primary["600"],
+          color: theme.palette.primary["500"],
         }),
         h4: ({ theme }) => ({
           fontSize: "1.6rem",
           fontWeight: 600,
-          color: theme.palette.primary["500"],
+          color: theme.palette.primary["400"],
         }),
         h5: ({ theme }) => ({
           fontSize: "1.4rem",
           fontWeight: 500,
-          color: theme.palette.primary["400"],
+          color: theme.palette.primary["300"],
         }),
         subtitle1: ({ theme }) => ({
           fontSize: "1rem",
-          color: theme.palette.primary["300"],
+          color: theme.palette.primary["200"],
           fontStyle: "italic",
         }),
         body1: ({ theme }) => ({
@@ -149,6 +149,64 @@ const themeLight = createTheme({
           color: theme.palette.secondary["500"],
           textTransform: "uppercase",
           fontWeight: 500,
+        }),
+      },
+    },
+    MuiFormControl: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          "&:hover .MuiInputLabel-root": {
+            color: theme.palette.secondary.main,
+          },
+          "&:hover .MuiInputLabel-root.Mui-error": {
+            color: theme.palette.error[600],
+          },
+        }),
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          "& fieldset.MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary[300],
+          },
+          "&:hover fieldset.MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.secondary.main,
+          },
+          "&.Mui-focused fieldset.MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.secondary[500],
+          },
+          "& .MuiInputBase-input.MuiOutlinedInput-input:-webkit-autofill": {
+            "-webkit-box-shadow": `0 0 0 100px ${theme.palette.background.paper} inset`,
+            "-webkit-text-fill-color": theme.palette.text.primary,
+          },
+          "&.Mui-error fieldset": {
+            borderColor: theme.palette.error[300],
+          },
+          "&.Mui-error:hover fieldset": {
+            borderColor: theme.palette.error.main,
+          },
+          "&.Mui-error.Mui-focused fieldset": {
+            borderColor: theme.palette.error[500],
+          },
+        }),
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          "&": {
+            color: theme.palette.text.secondary,
+          },
+          "&.Mui-focused": {
+            color: theme.palette.secondary[600],
+          },
+          "&.Mui-error": {
+            color: theme.palette.error[500],
+          },
+          "&.Mui-error.Mui-focused": {
+            color: theme.palette.error[700],
+          },
         }),
       },
     },
