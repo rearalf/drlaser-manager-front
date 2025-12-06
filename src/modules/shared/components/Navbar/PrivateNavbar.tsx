@@ -53,7 +53,19 @@ const PrivateNavbar = () => {
           }}
         >
           <Link to="/">
-            <img src="/dr-laser.png" />
+            <Box
+              component="img"
+              src="/dr-laser.png"
+              alt="Dr. Laser Logo"
+              sx={{
+                height: {
+                  xs: "26px",
+                  sm: "40px",
+                },
+                width: "auto",
+                objectFit: "contain",
+              }}
+            />
           </Link>
         </Box>
 
