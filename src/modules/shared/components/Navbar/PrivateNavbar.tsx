@@ -12,9 +12,11 @@ import {
 } from "@mui/material";
 
 import AvatarComponent from "@components/AvatarComponent";
+import { useSidebarStore } from "@stores/index";
 
 const PrivateNavbar = () => {
   const theme = useTheme();
+  const sidebarStore = useSidebarStore();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -39,6 +41,7 @@ const PrivateNavbar = () => {
           color="primary"
           aria-label="menu"
           sx={{ mr: 2 }}
+          onClick={sidebarStore.handleOpenState}
         >
           <FiMenu />
         </IconButton>
