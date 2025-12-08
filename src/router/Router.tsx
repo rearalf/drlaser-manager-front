@@ -7,6 +7,8 @@ import DashboardPage from "@modules/Dashboard";
 import LoginPage from "@modules/Auth/Login";
 import NotFoundPage from "@modules/NotFound";
 
+import PatientRoutes from "@modules/Patient/Patient.route";
+
 const router = createBrowserRouter([
   {
     element: <AuthLayout />,
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
         index: true,
         element: <DashboardPage />,
       },
+      ...PatientRoutes,
     ],
   },
   {
