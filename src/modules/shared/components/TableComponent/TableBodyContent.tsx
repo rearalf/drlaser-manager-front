@@ -14,12 +14,12 @@ interface ITableBodyContentProps {
 }
 
 const TableBodyContent = ({
+  body,
+  dense,
   loading,
   isEmpty,
-  body,
   headers,
   rowsPerPage,
-  dense,
   emptyMessage,
 }: ITableBodyContentProps) => {
   const getColumnsCount = (): number => {

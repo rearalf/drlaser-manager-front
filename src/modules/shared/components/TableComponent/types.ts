@@ -1,3 +1,4 @@
+import type { SxProps, Theme } from "@mui/material";
 import type { ReactNode } from "react";
 
 export type HeaderObject = {
@@ -18,7 +19,17 @@ export interface ITableComponent {
   emptyMessage?: string;
   className?: string;
   dense?: boolean;
-  maxHeight?: number | string;
+  sx?: SxProps<Theme> | undefined;
   handleSetPage: (value: number) => void;
   handleSetRowsPerPage: (value: number) => void;
+}
+
+export interface ITablePaginationActionsProps {
+  count: number;
+  page: number;
+  rowsPerPage: number;
+  onPageChange: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    newPage: number,
+  ) => void;
 }

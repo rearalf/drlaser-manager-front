@@ -6,15 +6,7 @@ import {
   LuChevronRight,
 } from "react-icons/lu";
 
-interface ITablePaginationActionsProps {
-  count: number;
-  page: number;
-  rowsPerPage: number;
-  onPageChange: (
-    event: React.MouseEvent<HTMLButtonElement>,
-    newPage: number,
-  ) => void;
-}
+import type { ITablePaginationActionsProps } from "./types";
 
 const TablePaginationActions = (props: ITablePaginationActionsProps) => {
   const { count, page, rowsPerPage, onPageChange } = props;

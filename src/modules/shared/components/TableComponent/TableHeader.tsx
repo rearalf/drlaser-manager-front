@@ -1,11 +1,4 @@
-import {
-  alpha,
-  TableRow,
-  useTheme,
-  Skeleton,
-  TableCell,
-  TableHead,
-} from "@mui/material";
+import { alpha, TableRow, Skeleton, TableCell, TableHead } from "@mui/material";
 
 import type { HeaderObject, ITableComponent } from "./types";
 
@@ -16,8 +9,6 @@ interface ITableHeaderProps {
 }
 
 const TableHeader = ({ headers, loading, dense }: ITableHeaderProps) => {
-  const theme = useTheme();
-
   const isObjectHeader = (
     headers: ITableComponent["headers"],
   ): headers is HeaderObject[] => {
@@ -34,19 +25,22 @@ const TableHeader = ({ headers, loading, dense }: ITableHeaderProps) => {
   return (
     <TableHead>
       <TableRow
-        sx={{
-          backgroundColor: alpha(theme.palette.primary.main, 0.1),
-        }}
+        sx={(theme) => ({
+          backgroundColor: alpha(
+            theme.palette.primary[300] ?? theme.palette.primary.main,
+            0.1,
+          ),
+        })}
       >
         {isObjectHeader(headers)
           ? headers.map((header) => (
               <TableCell
                 key={header.key}
                 align={header.align || "left"}
-                sx={{
+                sx={(theme) => ({
                   fontWeight: "bold",
-                  color: theme.palette.info.main,
-                }}
+                  color: theme.palette.secondary[600],
+                })}
               >
                 {loading ? (
                   <Skeleton

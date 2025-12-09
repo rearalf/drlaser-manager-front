@@ -1,13 +1,11 @@
-import { Box, TableCell, TableRow, Typography, useTheme } from "@mui/material";
+import { Box, TableCell, TableRow, Typography } from "@mui/material";
 
 const TableEmptyState = ({ emptyMessage }: { emptyMessage: string }) => {
-  const theme = useTheme();
-
   return (
     <TableRow>
       <TableCell colSpan={100}>
         <Box
-          sx={{
+          sx={(theme) => ({
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -15,7 +13,7 @@ const TableEmptyState = ({ emptyMessage }: { emptyMessage: string }) => {
             padding: theme.spacing(4),
             minHeight: 200,
             color: theme.palette.text.secondary,
-          }}
+          })}
         >
           <Typography variant="h6" gutterBottom>
             {emptyMessage}

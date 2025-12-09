@@ -17,6 +17,7 @@ const FilterPatient = (props: IFilterPatientProps) => {
       elevation={0}
       sx={{
         p: 2,
+        mb: 4,
       }}
     >
       <Grid
