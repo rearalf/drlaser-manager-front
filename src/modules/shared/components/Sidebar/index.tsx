@@ -53,7 +53,7 @@ const Sidebar = () => {
                   { to: "/rol", text: "Roles", icon: FiUsers },
                 ],
               },
-              { to: "/patient", text: "Pacientes", icon: FaHeartbeat },
+              { to: "/pacientes", text: "Pacientes", icon: FaHeartbeat },
               { to: "/appointment", text: "Citas", icon: FaRegCalendarAlt },
             ]}
             navItemStyles={styles.navItem}
