@@ -8,6 +8,7 @@ const PatientRoutes: RouteObject[] = [
       {
         index: true,
         element: <PatientList />,
+        handle: { crumb: "Pacientes" },
       },
     ],
   },

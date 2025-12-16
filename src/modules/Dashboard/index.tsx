@@ -1,5 +1,12 @@
+import { BreadCrumbsComponents } from "@components/index";
+
 const DashboardPage = () => {
-  return <div>DashboardPage</div>;
+  return (
+    <div>
+      <BreadCrumbsComponents />
+      DashboardPage
+    </div>
+  );
 };
 
 export default DashboardPage;

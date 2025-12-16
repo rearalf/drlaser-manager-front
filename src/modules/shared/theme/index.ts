@@ -177,8 +177,8 @@ const themeLight = createTheme({
             borderColor: theme.palette.secondary[500],
           },
           "& .MuiInputBase-input.MuiOutlinedInput-input:-webkit-autofill": {
-            "-webkit-box-shadow": `0 0 0 100px ${theme.palette.background.paper} inset`,
-            "-webkit-text-fill-color": theme.palette.text.primary,
+            WebkitBoxShadow: `0 0 0 100px ${theme.palette.background.paper} inset`,
+            WebkitTextFillColor: theme.palette.text.primary,
           },
           "&.Mui-error fieldset": {
             borderColor: theme.palette.error[300],
