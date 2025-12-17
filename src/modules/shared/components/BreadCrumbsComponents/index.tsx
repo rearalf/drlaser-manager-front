@@ -56,6 +56,16 @@ const BreadCrumbsComponents = (props: IBreadCrumbsProps) => {
         if (isLast) {
           return (
             <Box component="span" key={crumb.crumbName} sx={linkNameStyle}>
+              {crumb.crumbName === "Inicio" && (
+                <AiOutlineHome
+                  size={16}
+                  style={{
+                    marginRight: "4px",
+                    verticalAlign: "middle",
+                    color: "inherit",
+                  }}
+                />
+              )}
               {crumb.crumbName}
             </Box>
           );

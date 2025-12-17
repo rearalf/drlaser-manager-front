@@ -6,11 +6,11 @@ import NewPatient from "./pages/NewPatient";
 const PatientRoutes: RouteObject[] = [
   {
     path: "pacientes",
+    handle: { crumb: "Pacientes" },
     children: [
       {
         index: true,
         element: <PatientList />,
-        handle: { crumb: "Pacientes" },
       },
       {
         path: "nuevo-paciente",
