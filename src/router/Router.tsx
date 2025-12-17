@@ -24,6 +24,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     errorElement: <NotFoundPage />,
+    handle: { crumb: "Inicio" },
     children: [
       {
         index: true,
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFoundPage />,
+    handle: { crumb: "Página no encontrada" },
   },
 ]);
 

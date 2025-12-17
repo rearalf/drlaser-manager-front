@@ -1,12 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
-
-import { PATIENT_HEADERS } from "../constants/patientList";
-import TableComponent from "@components/TableComponent";
-import FilterPatient from "../components/FilterPatient";
-import usePatientList from "../hooks/usePatientsList";
-import RowPatient from "../components/RowPatient";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router";
+
+import { BreadCrumbsComponents, TableComponent } from "@components/index";
+
+import usePatientList from "../hooks/usePatientsList";
+import { PATIENT_HEADERS } from "../constants/patientList";
+import FilterPatient from "../components/FilterPatient";
+import RowPatient from "../components/RowPatient";
 
 const PatientsTable = () => {
   const {
@@ -23,6 +24,7 @@ const PatientsTable = () => {
 
   return (
     <>
+      <BreadCrumbsComponents />
       <Box
         component="header"
         sx={{
