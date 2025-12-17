@@ -6,6 +6,7 @@ import FilterPatient from "../components/FilterPatient";
 import usePatientList from "../hooks/usePatientsList";
 import RowPatient from "../components/RowPatient";
 import { FaPlus } from "react-icons/fa";
+import { Link } from "react-router";
 
 const PatientsTable = () => {
   const {
@@ -51,7 +52,8 @@ const PatientsTable = () => {
           type="button"
           color="primary"
           variant="contained"
-          onClick={() => {}}
+          component={Link}
+          to="/pacientes/nuevo-paciente"
           startIcon={<FaPlus size={10} />}
         >
           Nuevo pacientes
