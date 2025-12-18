@@ -1,10 +1,12 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import { FiUser } from "react-icons/fi";
+import type { Dayjs } from "dayjs";
 import { useState } from "react";
 
 import PaperComponent from "@components/PaperComponent";
 import TextFieldComponent from "@components/Inputs/TextFieldComponent";
 import AvatarComponent from "@components/AvatarComponent";
+import { DatePickerComponent, TextFieldPhone } from "@components/Inputs";
 
 const PersonalInfoSection = () => {
   const themeStyle = useTheme();
@@ -14,6 +16,8 @@ const PersonalInfoSection = () => {
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
   const [occupation, setOccupation] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
+  const [birthDate, setBirthDate] = useState<Dayjs | null>(null);
 
   const [avatarImage, setAvatarImage] = useState<string | undefined>(undefined);
 
@@ -81,6 +85,35 @@ const PersonalInfoSection = () => {
     handleOnBlur: () => {},
     helperText: "",
     error: false,
+  };
+
+  const textFieldPhone = {
+    id: "phone-input",
+    value: phoneValue,
+    error: phoneValue.length > 0 && phoneValue.length < 8,
+    helperText:
+      phoneValue.length > 0 && phoneValue.length < 8
+        ? "Teléfono incompleto"
+        : "",
+    disabled: false,
+    handleChange: (val: string) => setPhoneValue(val),
+    handleOnBlur: () => {},
+  };
+
+  const datePicker = {
+    id: "birth-date-picker",
+    label: "Fecha de Nacimiento",
+    value: birthDate,
+    // Validación: Error si hay un valor pero es inválido, o si necesitas que sea obligatorio
+    error: birthDate !== null && !birthDate.isValid(),
+    helperText:
+      birthDate !== null && !birthDate.isValid()
+        ? "Fecha inválida"
+        : "Formato: DD/MM/YYYY",
+    disabled: false,
+    required: true,
+    onChange: (newValue: Dayjs | null) => setBirthDate(newValue),
+    handleOnBlur: () => {},
   };
 
   return (
@@ -183,38 +216,54 @@ const PersonalInfoSection = () => {
           />
         </Grid>
 
-        {/* Campos opcionales - descomentar cuando estén disponibles los componentes y estados */}
-        {/* {birth_date && (
+        {datePicker && (
           <Grid size={{ xs: 12, md: 3, lg: 4 }}>
-          <DatePickerComponent
-          required
-          id="birth_date"
-          value={birth_date.value}
-          error={birth_date.error}
-          label="Fecha de Nacimiento"
-          onChange={birth_date.onChange}
-          helperText={birth_date.helperText}
-          handleOnBlur={birth_date.handleOnBlur}
-          disabled={birth_date.disabled}
-          />
-          </Grid>
-          )}
-          {textFieldPhone && (
-            <Grid size={{ xs: 12, md: 3, lg: 4 }}>
-            <TextFieldPhone
-            label="Teléfono"
-            id={textFieldPhone.id}
-            value={textFieldPhone.value}
-            onChange={textFieldPhone.handleChange}
-            handleOnBlur={textFieldPhone.handleOnBlur}
-            helperText={textFieldPhone.helperText}
-            error={textFieldPhone.error}
-            disabled={textFieldPhone.disabled}
+            <DatePickerComponent
+              id={datePicker.id}
+              label={datePicker.label}
+              value={datePicker.value}
+              onChange={datePicker.onChange}
+              error={datePicker.error}
+              helperText={datePicker.helperText}
+              disabled={datePicker.disabled}
+              required={datePicker.required}
+              onBlur={datePicker.handleOnBlur}
             />
-            </Grid>
-            )} */}
+          </Grid>
+        )}
+
+        {textFieldPhone && (
+          <Grid
+            size={{ xs: 12, md: 3, lg: 4 }}
+            sx={{
+              alignSelf: {
+                xs: "center",
+                md: "flex-start",
+              },
+            }}
+          >
+            <TextFieldPhone
+              label="Teléfono"
+              id={textFieldPhone.id}
+              value={textFieldPhone.value}
+              error={textFieldPhone.error}
+              disabled={textFieldPhone.disabled}
+              helperText={textFieldPhone.helperText}
+              onBlur={textFieldPhone.handleOnBlur}
+              onChange={textFieldPhone.handleChange}
+            />
+          </Grid>
+        )}
         {textFieldAddress && (
-          <Grid size={{ xs: 12, md: 3, lg: 4 }}>
+          <Grid
+            size={{ xs: 12, md: 3, lg: 4 }}
+            sx={{
+              alignSelf: {
+                xs: "center",
+                md: "flex-start",
+              },
+            }}
+          >
             <TextFieldComponent
               fullWidth
               type="text"
@@ -232,7 +281,15 @@ const PersonalInfoSection = () => {
           </Grid>
         )}
         {textFieldOccupation && (
-          <Grid size={{ xs: 12, md: 3, lg: 4 }}>
+          <Grid
+            size={{ xs: 12, md: 3, lg: 4 }}
+            sx={{
+              alignSelf: {
+                xs: "center",
+                md: "flex-start",
+              },
+            }}
+          >
             <TextFieldComponent
               fullWidth
               type="text"

@@ -1,5 +1,6 @@
 import type { Theme } from "@emotion/react";
 import type { SxProps } from "@mui/material";
+import type { Dayjs } from "dayjs";
 
 export interface ITextFieldBasicProps {
   id: string;
@@ -30,4 +31,18 @@ export interface ITextFieldBasicProps {
     | "none"
     | "numeric"
     | "decimal";
+}
+
+export interface IDatePickerComponent {
+  id: string;
+  label: string;
+  value: Dayjs | null;
+  onChange: (newValue: Dayjs | null) => void;
+  error?: boolean;
+  required?: boolean;
+  disabled?: boolean;
+  helperText?: string;
+  onBlur?: () => void;
+  minDate?: Dayjs;
+  maxDate?: Dayjs;
 }

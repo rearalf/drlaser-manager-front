@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import LocalizationProviderComponent from "./LocalizationProvider";
 import ReactThemeProvider from "./ReactThemeProvider";
 
 interface IProviders {
@@ -6,7 +7,11 @@ interface IProviders {
 }
 
 function Providers({ children }: IProviders) {
-  return <ReactThemeProvider>{children}</ReactThemeProvider>;
+  return (
+    <ReactThemeProvider>
+      <LocalizationProviderComponent>{children}</LocalizationProviderComponent>
+    </ReactThemeProvider>
+  );
 }
 
 export default Providers;
