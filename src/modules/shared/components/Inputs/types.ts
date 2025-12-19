@@ -1,5 +1,5 @@
 import type { Theme } from "@emotion/react";
-import type { SxProps } from "@mui/material";
+import type { CheckboxProps, SxProps, TextFieldProps } from "@mui/material";
 import type { Dayjs } from "dayjs";
 
 export interface ITextFieldBasicProps {
@@ -45,4 +45,26 @@ export interface IDatePickerComponent {
   onBlur?: () => void;
   minDate?: Dayjs;
   maxDate?: Dayjs;
+}
+
+export interface IBasicIdNameDescription {
+  id: number | string;
+  name: string;
+}
+
+export interface ISelectComponentProps
+  extends Omit<TextFieldProps, "onChange" | "value"> {
+  id: string;
+  options: IBasicIdNameDescription[];
+  value: number | string;
+  onChange: (value: string) => void;
+  onBlur?: () => void;
+}
+
+export interface ICheckboxComponentProps
+  extends Omit<CheckboxProps, "onChange"> {
+  id: string;
+  label: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
 }

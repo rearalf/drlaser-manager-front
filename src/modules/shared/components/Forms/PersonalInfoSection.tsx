@@ -7,6 +7,8 @@ import {
   TextFieldPhone,
   PaperComponent,
   AvatarComponent,
+  SelectComponent,
+  CheckboxComponent,
   TextFieldComponent,
   DatePickerComponent,
 } from "@components/index";
@@ -21,6 +23,9 @@ const PersonalInfoSection = () => {
   const [occupation, setOccupation] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
   const [birthDate, setBirthDate] = useState<Dayjs | null>(null);
+  const [selectValue, setSelectValue] = useState<string | number>("");
+  const [isTouched, setIsTouched] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
   const [avatarImage, setAvatarImage] = useState<string | undefined>(undefined);
 
@@ -107,7 +112,6 @@ const PersonalInfoSection = () => {
     id: "birth-date-picker",
     label: "Fecha de Nacimiento",
     value: birthDate,
-    // Validación: Error si hay un valor pero es inválido, o si necesitas que sea obligatorio
     error: birthDate !== null && !birthDate.isValid(),
     helperText:
       birthDate !== null && !birthDate.isValid()
@@ -117,6 +121,34 @@ const PersonalInfoSection = () => {
     required: true,
     onChange: (newValue: Dayjs | null) => setBirthDate(newValue),
     handleOnBlur: () => {},
+  };
+
+  const selectField = {
+    id: "gender-select",
+    label: "Género",
+    value: selectValue,
+    options: [
+      { id: 1, name: "Masculino" },
+      { id: 2, name: "Femenino" },
+    ],
+    error: isTouched && selectValue === "",
+    helperText:
+      isTouched && selectValue === "" ? "Debe seleccionar una opción" : "",
+    onChange: (val: string) => {
+      setSelectValue(val);
+      setIsTouched(true);
+    },
+    onBlur: () => setIsTouched(true),
+  };
+
+  const completeOdontogram = {
+    id: "complete_odontogram",
+    label: "Odontograma Completo",
+    checked: isComplete,
+    disabled: false,
+    error: false,
+    helperText: "",
+    onChange: (val: boolean) => setIsComplete(val),
   };
 
   return (
@@ -314,33 +346,34 @@ const PersonalInfoSection = () => {
             />
           </Grid>
         )}
-        {/* {selectGender && (
+        {selectField && (
           <Grid size={{ xs: 12, md: 4, lg: 4 }}>
             <SelectComponent
+              id={selectField.id}
+              label={selectField.label}
+              value={selectField.value}
+              options={selectField.options}
+              onChange={selectField.onChange}
+              error={selectField.error}
+              helperText={selectField.helperText}
+              onBlur={selectField.onBlur}
               required
-              id="gender"
-              label="Género"
-              onChange={selectGender.onChange}
-              options={GENDER_OPTIONS}
-              value={selectGender.value || ""}
-              helperText={selectGender.helperText}
-              error={selectGender.error}
-              disabled={selectGender.disabled}
-              handleOnBlur={selectGender.handleOnBlur}
             />
           </Grid>
         )}
-        {complete_odontogram && (
+        {completeOdontogram && (
           <Grid size={{ xs: 12, md: 4, lg: 4 }}>
             <CheckboxComponent
-              id="complete_odontogram"
-              label="Odontograma Completo"
-              checked={complete_odontogram.checked}
-              disabled={complete_odontogram.disabled}
-              onChange={complete_odontogram.onChange}
+              id={completeOdontogram.id}
+              label={completeOdontogram.label}
+              checked={completeOdontogram.checked}
+              onChange={completeOdontogram.onChange}
+              disabled={completeOdontogram.disabled}
+              // Puedes pasar props de color de MUI directamente
+              color={completeOdontogram.error ? "error" : "primary"}
             />
           </Grid>
-        )} */}
+        )}
       </Grid>
     </PaperComponent>
   );
