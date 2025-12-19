@@ -9,30 +9,36 @@ import type { IAvatarComponentProps } from "./types";
 const AvatarComponent = (props: IAvatarComponentProps) => {
   const ifSxForImage = props.srcImage
     ? {
-        width: 100,
-        height: 100,
         bgcolor: alphaStyles(props.themeStyle.palette.primary.main, 0.1),
         border: `2px solid ${alphaStyles(props.themeStyle.palette.primary.main, 0.2)}`,
+        transition: "all 0.3s ease-in-out",
+        "& svg": {
+          color: props.themeStyle.palette.primary.main,
+        },
+        "&:hover": {
+          border: `2px solid ${props.themeStyle.palette.secondary.main}`,
+          boxShadow: `0 0 12px ${alphaStyles(props.themeStyle.palette.secondary.main, 0.4)}`,
+          "& svg": {
+            color: props.themeStyle.palette.secondary.main,
+          },
+        },
       }
     : {
-        width: {
-          xs: 100,
-          sm: 100,
-          md: 150,
-          lg: 150,
-          xl: 150,
-        },
-        height: {
-          xs: 100,
-          sm: 100,
-          md: 150,
-          lg: 150,
-          xl: 150,
-        },
         bgcolor:
           stringAvatar(props.name)?.bgcolor ||
           alphaStyles(props.themeStyle.palette.primary.main, 0.1),
         border: `2px solid ${alphaStyles(props.themeStyle.palette.primary.main, 0.2)}`,
+        transition: "all 0.3s ease-in-out",
+        "& svg": {
+          color: props.themeStyle.palette.primary.main,
+        },
+        "&:hover": {
+          border: `2px solid ${stringAvatar(props.name)?.bgcolor || props.themeStyle.palette.secondary.main}`,
+          boxShadow: `0 0 12px ${alphaStyles(stringAvatar(props.name)?.bgcolor || props.themeStyle.palette.secondary.main, 0.4)}`,
+          "& svg": {
+            color: props.themeStyle.palette.secondary.main,
+          },
+        },
       };
 
   return (
@@ -47,12 +53,32 @@ const AvatarComponent = (props: IAvatarComponentProps) => {
         props.name.trim().length === 0
       }
     >
-      <Avatar src={props.srcImage} sx={{ ...ifSxForImage, ...props.sx }}>
+      <Avatar
+        src={props.srcImage}
+        sx={{
+          width: {
+            xs: 100,
+            sm: 100,
+            md: 150,
+            lg: 150,
+            xl: 150,
+          },
+          height: {
+            xs: 100,
+            sm: 100,
+            md: 150,
+            lg: 150,
+            xl: 150,
+          },
+          ...ifSxForImage,
+          ...props.sx,
+        }}
+      >
         {!props.srcImage
           ? stringAvatar(props.name)?.children || (
               <FiCamera
                 size={32}
-                color={props.themeStyle.palette.primary.main}
+                style={{ transition: "color 0.3s ease-in-out" }}
               />
             )
           : null}

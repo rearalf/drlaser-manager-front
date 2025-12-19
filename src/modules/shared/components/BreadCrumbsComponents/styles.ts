@@ -1,4 +1,3 @@
-import { alpha } from "@mui/material";
 import type { Theme } from "@mui/material/styles";
 
 export const linkNameStyle = (theme: Theme) => ({
@@ -6,9 +5,9 @@ export const linkNameStyle = (theme: Theme) => ({
   fontWeight: 500,
   px: 1,
   py: 0.5,
-  color: "#fff",
+  color: theme.palette.secondary[100],
   borderRadius: 1,
-  bgcolor: alpha(theme.palette.primary.main, 1),
+  bgcolor: theme.palette.secondary.main,
 });
 
 export const linkContentStyle = (theme: Theme) => ({
@@ -23,8 +22,8 @@ export const linkContentStyle = (theme: Theme) => ({
   borderRadius: 1,
   transition: "all 0.2s ease-in-out",
   "&:hover": {
-    color: theme.palette.primary.main,
-    bgcolor: alpha(theme.palette.primary.main, 0.08),
+    color: theme.palette.primary[100],
+    bgcolor: theme.palette.secondary.main,
     transform: "translateY(-1px)",
   },
 });
