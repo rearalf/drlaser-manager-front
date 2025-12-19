@@ -1,12 +1,15 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
+import dayjs, { type Dayjs } from "dayjs";
 import { FiUser } from "react-icons/fi";
-import type { Dayjs } from "dayjs";
 import { useState } from "react";
 
-import PaperComponent from "@components/PaperComponent";
-import TextFieldComponent from "@components/Inputs/TextFieldComponent";
-import AvatarComponent from "@components/AvatarComponent";
-import { DatePickerComponent, TextFieldPhone } from "@components/Inputs";
+import {
+  TextFieldPhone,
+  PaperComponent,
+  AvatarComponent,
+  TextFieldComponent,
+  DatePickerComponent,
+} from "@components/index";
 
 const PersonalInfoSection = () => {
   const themeStyle = useTheme();
@@ -138,7 +141,11 @@ const PersonalInfoSection = () => {
       >
         <Grid>
           <Box display="flex" flexDirection="column" alignItems="center">
-            <label htmlFor="avatar-upload">
+            <Box
+              component="label"
+              htmlFor="avatar-upload"
+              sx={{ cursor: "pointer" }}
+            >
               <AvatarComponent
                 themeStyle={themeStyle}
                 name={
@@ -160,7 +167,7 @@ const PersonalInfoSection = () => {
                 type="file"
                 onChange={handleAvatarChange}
               />
-            </label>
+            </Box>
           </Box>
         </Grid>
         <Grid size={{ xs: 12, md: 3, lg: 3 }}>
@@ -228,6 +235,8 @@ const PersonalInfoSection = () => {
               disabled={datePicker.disabled}
               required={datePicker.required}
               onBlur={datePicker.handleOnBlur}
+              minDate={dayjs().subtract(100, "years")}
+              maxDate={dayjs()}
             />
           </Grid>
         )}

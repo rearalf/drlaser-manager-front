@@ -161,6 +161,41 @@ const themeLight = createTheme({
           "&:hover .MuiInputLabel-root.Mui-error": {
             color: theme.palette.error[600],
           },
+          "& fieldset.MuiPickersOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary[300],
+          },
+          "&:hover fieldset.MuiPickersOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.secondary[500],
+          },
+          "&.Mui-focused:not(.Mui-error) fieldset.MuiPickersOutlinedInput-notchedOutline":
+            {
+              borderColor: theme.palette.secondary[500],
+            },
+          "& .MuiInputBase-input.MuiOutlinedInput-input:-webkit-autofill": {
+            WebkitBoxShadow: `0 0 0 100px ${theme.palette.background.paper} inset`,
+            WebkitTextFillColor: theme.palette.text.primary,
+          },
+          "&.Mui-error fieldset": {
+            borderColor: theme.palette.error[300],
+          },
+          "&.Mui-error:hover fieldset": {
+            borderColor: theme.palette.error.main,
+          },
+          "&.Mui-error.Mui-focused fieldset": {
+            borderColor: theme.palette.error[500],
+          },
+          "&:hover .MuiInputAdornment-root .MuiButtonBase-root.MuiIconButton-root":
+            {
+              color: theme.palette.secondary[500],
+            },
+          "&.Mui-focused:not(.Mui-error) .MuiInputAdornment-root .MuiButtonBase-root.MuiIconButton-root":
+            {
+              color: theme.palette.secondary[500],
+            },
+          "& .Mui-error .MuiInputAdornment-root .MuiButtonBase-root.MuiIconButton-root":
+            {
+              color: theme.palette.error[500],
+            },
         }),
       },
     },
