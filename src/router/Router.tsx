@@ -5,8 +5,9 @@ import RootLayout from "@layouts/RootLayout";
 
 import DashboardPage from "@modules/Dashboard";
 import NotFoundPage from "@modules/NotFound";
-import LoginPage from "@modules/auth/Login";
+import LoginPage from "@modules/Auth/Login";
 
+import AppointmentRoutes from "@modules/Appointment/Appointment.route";
 import PatientRoutes from "@modules/Patient/Patient.route";
 
 const router = createBrowserRouter([
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
         element: <DashboardPage />,
       },
       ...PatientRoutes,
+      ...AppointmentRoutes,
     ],
   },
   {

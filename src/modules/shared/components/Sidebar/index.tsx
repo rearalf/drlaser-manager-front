@@ -54,7 +54,7 @@ const Sidebar = () => {
                 ],
               },
               { to: "/pacientes", text: "Pacientes", icon: FaHeartbeat },
-              { to: "/appointment", text: "Citas", icon: FaRegCalendarAlt },
+              { to: "/citas", text: "Citas", icon: FaRegCalendarAlt },
             ]}
             navItemStyles={styles.navItem}
             navItemsStyles={styles.navItems}
