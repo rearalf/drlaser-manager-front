@@ -2,11 +2,14 @@ import { Box, Button, Typography } from "@mui/material";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router";
 
-import { BreadCrumbsComponents, TableComponent } from "@components/index";
+import {
+  Filters,
+  TableComponent,
+  BreadCrumbsComponents,
+} from "@components/index";
 
-import usePatientList from "../hooks/usePatientsList";
 import { PATIENT_HEADERS } from "../constants/patientList";
-import FilterPatient from "../components/FilterPatient";
+import usePatientList from "../hooks/usePatientsList";
 import RowPatient from "../components/RowPatient";
 
 const PatientsTable = () => {
@@ -62,7 +65,7 @@ const PatientsTable = () => {
         </Button>
       </Box>
 
-      <FilterPatient
+      <Filters
         handleClearFilter={() => {}}
         handleSearch={() => {}}
         handleSearchInput={() => {}}
