@@ -1,6 +1,6 @@
-import { Box, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Grid, IconButton, Typography, useTheme } from "@mui/material";
+import { FiTrash2, FiUser } from "react-icons/fi";
 import dayjs, { type Dayjs } from "dayjs";
-import { FiUser } from "react-icons/fi";
 import { useState } from "react";
 
 import {
@@ -174,31 +174,61 @@ const PersonalInfoSection = () => {
         <Grid>
           <Box display="flex" flexDirection="column" alignItems="center">
             <Box
-              component="label"
-              htmlFor="avatar-upload"
-              sx={{ cursor: "pointer" }}
+              component="div"
+              sx={{ cursor: "pointer", position: "relative" }}
             >
-              <AvatarComponent
-                themeStyle={themeStyle}
-                name={
-                  textFieldName.value.trim() +
-                  " " +
-                  textFieldMiddleName.value.trim() +
-                  " " +
-                  textFieldLastName.value.trim()
-                }
-                srcImage={avatarImage}
-                tooltipTitle={undefined}
-                disableInteractive={false}
-                placement={undefined}
-              />
-              <input
-                accept="image/*"
-                style={{ display: "none" }}
-                id="avatar-upload"
-                type="file"
-                onChange={handleAvatarChange}
-              />
+              {avatarImage !== undefined && (
+                <IconButton
+                  color="error"
+                  sx={{
+                    zIndex: 20,
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    boxShadow: "0 8px 16px rgba(0,0,0,0.3)",
+                    bgcolor: (theme) => theme.palette.error[500],
+                    color: (theme) => theme.palette.error[100],
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+
+                    "&:hover": {
+                      bgcolor: (theme) => theme.palette.error[700],
+                    },
+                    "&:active": {
+                      bgcolor: (theme) => theme.palette.error[300],
+                    },
+                  }}
+                  onClick={() => setAvatarImage(undefined)}
+                >
+                  <FiTrash2 size={18} />
+                </IconButton>
+              )}
+              <Box
+                component="label"
+                htmlFor="avatar-upload"
+                sx={{ cursor: "pointer" }}
+              >
+                <AvatarComponent
+                  themeStyle={themeStyle}
+                  name={
+                    textFieldName.value.trim() +
+                    " " +
+                    textFieldMiddleName.value.trim() +
+                    " " +
+                    textFieldLastName.value.trim()
+                  }
+                  srcImage={avatarImage}
+                  tooltipTitle={undefined}
+                  disableInteractive={false}
+                  placement={undefined}
+                />
+                <input
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  id="avatar-upload"
+                  type="file"
+                  onChange={handleAvatarChange}
+                />
+              </Box>
             </Box>
           </Box>
         </Grid>
@@ -369,7 +399,6 @@ const PersonalInfoSection = () => {
               checked={completeOdontogram.checked}
               onChange={completeOdontogram.onChange}
               disabled={completeOdontogram.disabled}
-              // Puedes pasar props de color de MUI directamente
               color={completeOdontogram.error ? "error" : "primary"}
             />
           </Grid>
