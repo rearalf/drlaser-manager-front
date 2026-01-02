@@ -5,6 +5,7 @@ import { useState, type ChangeEvent } from "react";
 
 import { Filters } from "@components/index";
 import { APPOINTMENT_STATUS_LABELS } from "@modules/shared/constants/Appointment.const";
+import NewAppointmentModal from "../components/NewAppointmentModal";
 
 function AppointmentList() {
   const [search, setSearch] = useState("");
@@ -83,6 +84,8 @@ function AppointmentList() {
         statusOptions={statusOptions}
         handleStatusChange={handleStatusChange}
       />
+
+      <NewAppointmentModal handleClose={() => {}} open />
     </>
   );
 }

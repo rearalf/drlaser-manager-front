@@ -1,5 +1,6 @@
 export { default as BreadCrumbsComponents } from "./BreadCrumbsComponents";
 export { default as AvatarComponent } from "./AvatarComponent";
+export { default as DialogComponent } from "./DialogComponent";
 export { default as TableComponent } from "./TableComponent";
 export { default as PaperComponent } from "./PaperComponent";
 export { default as Filters } from "./Filters";
